@@ -23,9 +23,17 @@ export default function App() {
     })
     setMovies(updated)
   }
+  let numOfMovies = movies.length;
+  const numOfWatched = movies.filter(movies => movies.watched === true).length;
+  let numOfUnwatched = numOfMovies - numOfWatched;
+
   return (
     <>
       <h1>Movie Night</h1>
+      <p>Total Movies: {numOfMovies}</p>
+      <p>Total Movies Watched: {numOfWatched} </p>
+      <p>Total Movies Unwatched: {numOfUnwatched} </p>
+
       {
         movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} onToggle={toggleWatched} />
